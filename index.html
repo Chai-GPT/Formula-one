@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1: The Ultimate Infographic</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --f1-red: #FF1801;
+            --f1-black: #15151E;
+            --f1-gray: #38383F;
+            --f1-light-gray: #DCDCDC;
+            --f1-dark-glass: rgba(21, 21, 30, 0.95);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: var(--f1-light-gray);
+            /* Carbon fiber background */
+            background-image: 
+                linear-gradient(45deg, rgba(21, 21, 30, 0.7) 25%, transparent 25%), 
+                linear-gradient(-45deg, rgba(21, 21, 30, 0.7) 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, rgba(21, 21, 30, 0.7) 75%), 
+                linear-gradient(-45deg, transparent 75%, rgba(21, 21, 30, 0.7) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            min-height: 100vh;
+        }
+        
+        /* Styling for each info pod */
+        .pod {
+            background-color: var(--f1-dark-glass);
+            border: 2px solid var(--f1-gray);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            /* The high-tech shape */
+            clip-path: polygon(0 8%, 8% 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+            
+            transition: border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        
+        /* Hover effect */
+        .pod:hover {
+            border-color: var(--f1-red);
+            transform: scale(1.01);
+        }
+
+        /* Title Styling */
+        .pod-title {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            border-bottom: 2px solid #444;
+            padding-bottom: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .pod-number {
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 900;
+            color: var(--f1-red);
+        }
+        .pod-title-text {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #ffffff;
+        }
+
+        /* UPDATED STAT CARD STYLING 
+           Matches the screenshot: Dark grey bg, rounded corners, specific typography.
+        */
+        .stat-display {
+            background: linear-gradient(180deg, #2e2e38 0%, #23232b 100%);
+            border: 1px solid #3f3f46;
+            border-radius: 0.75rem; /* More rounded */
+            padding: 1.25rem 0.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+        .stat-display-number {
+            font-size: 2.5rem;
+            font-weight: 900; /* Extra bold */
+            color: var(--f1-red);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+        .stat-display-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #e5e7eb; /* White/Light Grey */
+            line-height: 1.2;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Bar chart */
+        .bar-chart-bar { 
+            background-color: #374151; 
+            border-radius: 0.25rem; 
+            height: 1.5rem; 
+            margin-top: 0.25rem;
+        }
+        .bar-chart-fill { 
+            height: 100%; 
+            border-radius: 0.25rem;
+        }
+
+        /* List Styling */
+        .f1-list li {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: #d1d5db;
+        }
+        .f1-arrow {
+            color: var(--f1-red);
+            font-weight: 900;
+            margin-right: 0.5rem;
+            font-size: 1.2em;
+        }
+
+        /* Responsive Text Adjustments */
+        @media (max-width: 768px) {
+            .pod-title-text { font-size: 1.5rem; }
+            .pod-number { font-size: 2rem; }
+        }
+
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- HEADER SECTION WITH LOGO -->
+    <header class="max-w-7xl mx-auto mb-12 text-center flex flex-col items-center">
+        
+        <!-- NEW: Formula 1 Logo Space -->
+        <div class="mb-6">
+            <img src="Formula-One.png" alt="Formula 1 Logo" class="h-16 md:h-24 object-contain" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'text-red-500 font-bold text-center text-2xl\'>F1</div>'">
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-black text-white uppercase tracking-wider">
+            THE F1 INFO-CIRCUIT
+        </h1>
+        <p class="text-lg md:text-xl text-gray-400 font-bold uppercase tracking-widest mt-2">
+            A visual map of the sport, the speed, and the business
+        </p>
+    </header>
+
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- ===== POD 1: THE F1 ATHLETE (UPDATED TO MATCH SCREENSHOT) ===== -->
+        <section class="pod" id="pod1">
+            <div class="pod-title">
+                <div class="pod-number">01</div>
+                <div class="pod-title-text">The F1 Athlete</div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Image Left -->
+                <div class="flex justify-center items-center md:row-span-2 pt-4">
+                    <img src="Helmet-Logo.png" alt="F1 Helmet Logo" class="w-40 h-40 md:w-full md:h-auto object-contain max-h-64 opacity-90" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'text-red-500 font-bold text-center\'>[Image: Helmet-Logo.png]</div>'">
+                </div>
+                
+                <!-- Content Right -->
+                <div class="md:col-span-2 flex flex-col justify-start h-full">
+                    
+                    <!-- Text Paragraph (Top Right) -->
+                    <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                        An F1 driver is an elite athlete trained for a unique combination of extreme G-forces, intense heat, and split-second mental processing.
+                    </p>
+                    
+                    <!-- Stats Grid (Under Paragraph) -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+                        <div class="stat-display">
+                            <div class="stat-display-number">6G</div>
+                            <div class="stat-display-label">PEAK<br>G-FORCE</div>
+                        </div>
+                        <div class="stat-display">
+                            <div class="stat-display-number">180</div>
+                            <div class="stat-display-label">AVG.<br>BPM</div>
+                        </div>
+                        <div class="stat-display">
+                            <div class="stat-display-number">50&deg;</div>
+                            <div class="stat-display-label">COCKPIT<br>HEAT</div>
+                        </div>
+                        <div class="stat-display">
+                            <div class="stat-display-number">4KG</div>
+                            <div class="stat-display-label">SWEAT<br>LOST</div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom List (Under All) -->
+                    <ul class="f1-list list-none pt-4">
+                        <li>
+                            <span class="f1-arrow">&gt;</span>
+                            <strong class="text-white uppercase">NECK STRENGTH:</strong> 
+                            In a corner, the driver's head + helmet feels like it weighs <strong class="text-white">30kg (66 lbs)</strong>. They train neck muscles just to see.
+                        </li>
+                        <li>
+                            <span class="f1-arrow">&gt;</span>
+                            <strong class="text-white uppercase">ENDURANCE:</strong> 
+                            A 2-hour race at 160-180 bpm is like running a marathon, but sitting down and being subjected to G-forces.
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== POD 2: HOW THE RACE WORKS ===== -->
+        <section class="pod" id="pod2">
+            <div class="pod-title">
+                <div class="pod-number">02</div>
+                <div class="pod-title-text">How The Race Works</div>
+            </div>
+            
+            <p class="text-lg mb-6">It's a global championship (~24 races) across 5 continents. Each "Grand Prix" is a 3-day event where strategy is as important as speed.</p>
+            
+            <div class="space-y-8">
+                <!-- Event Breakdown -->
+                <div>
+                    <h3 class="font-bold text-white text-lg uppercase mb-3">The 3-Day Event Breakdown</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                        <div class="bg-gray-800 p-4 rounded-lg relative">
+                            <div class="font-bold text-xl text-white">FRIDAY</div>
+                            <div class="text-sm text-gray-400">Practice (Data)</div>
+                            <!-- Arrow for desktop -->
+                            <div class="hidden md:block absolute -right-6 top-1/2 -translate-y-1/2 text-gray-600 text-2xl font-black">&gt;&gt;</div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg relative">
+                            <div class="font-bold text-xl text-white">SATURDAY</div>
+                            <div class="text-sm text-gray-400">Qualifying (Grid)</div>
+                            <!-- Arrow for desktop -->
+                            <div class="hidden md:block absolute -right-6 top-1/2 -translate-y-1/2 text-gray-600 text-2xl font-black">&gt;&gt;</div>
+                        </div>
+                        <div class="bg-f1-red p-4 rounded-lg">
+                            <div class="font-bold text-xl text-black">SUNDAY</div>
+                            <div class="text-sm text-gray-900 font-bold">Race Day</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Tires -->
+                    <div>
+                        <h3 class="font-bold text-white text-lg uppercase mb-3">Tire Strategy</h3>
+                        <p class="text-sm mb-3">Must use 2 of 3 compounds. Pit stops are &lt; 2.5s.</p>
+                        <div class="flex justify-between items-end px-2">
+                            <div class="text-center">
+                                <div class="w-14 h-14 rounded-full bg-red-600 border-4 border-red-300 mx-auto mb-1"></div>
+                                <span class="font-bold text-sm">SOFT</span>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-14 h-14 rounded-full bg-yellow-400 border-4 border-yellow-200 mx-auto mb-1"></div>
+                                <span class="font-bold text-sm">MEDIUM</span>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-14 h-14 rounded-full bg-white border-4 border-gray-400 mx-auto mb-1"></div>
+                                <span class="font-bold text-sm">HARD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Points -->
+                    <div>
+                        <h3 class="font-bold text-white text-lg uppercase mb-3">Points (Top 10)</h3>
+                        <div class="text-lg font-bold leading-loose">
+                            1st:<span class="text-red-500">25</span> | 2nd:<span class="text-red-500">18</span> | 3rd:<span class="text-red-500">15</span><br>
+                            4th:<span class="text-red-500">12</span> | 5th:<span class="text-red-500">10</span> | 6th:<span class="text-red-500">8</span><br>
+                            7th:<span class="text-red-500">6</span> | 8th:<span class="text-red-500">4</span> | 9th:<span class="text-red-500">2</span> | 10th:<span class="text-red-500">1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== POD 3: ENGINEERING THE SPEED ===== -->
+        <section class="pod" id="pod3">
+            <div class="pod-title">
+                <div class="pod-number">03</div>
+                <div class="pod-title-text">Engineering The Speed</div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Image -->
+                <div class="flex justify-center items-center md:row-span-2">
+                    <img src="Engine-Logo.png" alt="F1 Engine Logo" class="w-40 h-40 md:w-full md:h-auto object-contain max-h-64" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'text-red-500 font-bold text-center\'>[Image: Engine-Logo.png]</div>'">
+                </div>
+                
+                <!-- Info -->
+                <div class="md:col-span-2">
+                    <p class="text-lg mb-6">The car is a 1000+ HP hybrid. The magic is how it uses a tiny <strong class="text-white">1.6-Liter V6</strong> (like in a family car) to produce this power.</p>
+                    
+                    <!-- Special Efficiency Box -->
+                    <div class="bg-gray-800 rounded-lg p-6 text-center mb-6 border border-gray-700">
+                        <div class="text-5xl font-black text-red-500 mb-1">&gt;52%</div>
+                        <div class="text-xs font-bold text-white uppercase tracking-widest">The World's Most Efficient Engine</div>
+                    </div>
+
+                    <!-- List -->
+                    <ul class="f1-list list-none">
+                        <li><span class="f1-arrow">&gt;</span><strong class="text-white">ICE (Engine):</strong> The 1.6L V6 spins to 15,000 RPM (a road car is ~6,000).</li>
+                        <li><span class="f1-arrow">&gt;</span><strong class="text-white">MGU-K (Kinetic):</strong> Recovers energy from braking for a 160hp boost.</li>
+                        <li><span class="f1-arrow">&gt;</span><strong class="text-white">MGU-H (Heat):</strong> Recovers waste energy from the turbocharger to eliminate "turbo lag" and charge the battery.</li>
+                        <li><span class="f1-arrow">&gt;</span><strong class="text-white">AERO:</strong> The wings & floor create 3,000kg of downforce, enough to drive upside down at 180 mph.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== POD 4: THE PROFITABILITY (Split Columns) ===== -->
+        <section class="pod" id="pod4">
+            <div class="pod-title">
+                <div class="pod-number">04</div>
+                <div class="pod-title-text">The Profitability</div>
+            </div>
+            
+            <!-- Split into 2 Columns matching screenshot -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                
+                <!-- Column 1: Financials -->
+                <div>
+                    <p class="text-lg mb-6">Prize money covers only a fraction of the true cost. F1 teams don’t operate for profit — the sport is a global marketing expense. Teams rely on owners to cover the deficit.</p>
+                    
+                    <h3 class="font-bold text-white text-lg uppercase mb-4">Costs vs. Revenue (Top Team, Est.)</h3>
+                    
+                    <div class="space-y-5">
+                        <!-- Cost Bar -->
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1 uppercase text-white">
+                                <span>Real Total Cost (Est.)</span>
+                                <span>~$350 Million</span>
+                            </div>
+                            <div class="bar-chart-bar">
+                                <div class="bar-chart-fill" style="width: 100%; background-color: var(--f1-red);"></div>
+                            </div>
+                        </div>
+                        <!-- Prize Bar -->
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1 uppercase text-white">
+                                <span>Prize Money (Est. Winner)</span>
+                                <span>~$140 Million</span>
+                            </div>
+                            <div class="bar-chart-bar">
+                                <div class="bar-chart-fill" style="width: 40%; background-color: #3b82f6;"></div>
+                            </div>
+                        </div>
+                        <!-- Sponsorship Bar -->
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1 uppercase text-white">
+                                <span>Sponsorship</span>
+                                <span>~$150-200 Million</span>
+                            </div>
+                            <div class="bar-chart-bar">
+                                <div class="bar-chart-fill" style="width: 50%; background-color: #22c55e;"></div>
+                            </div>
+                        </div>
+                        <!-- Funding Gap Bar -->
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1 uppercase text-white">
+                                <span>Funding Gap (Deficit)</span>
+                                <span>~$50-100 Million</span>
+                            </div>
+                            <div class="bar-chart-bar">
+                                <div class="bar-chart-fill" style="width: 20%; background-color: #6b7280;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2: Case Study -->
+                <div class="flex flex-col items-center justify-center border-l-0 md:border-l border-gray-700 md:pl-8">
+                     <h3 class="font-black text-white text-2xl uppercase text-center tracking-wide mb-6">CASE STUDY:<br>RED BULL</h3>
+
+                     <!-- Logo -->
+                     <div class="w-full max-w-[200px] aspect-square flex items-center justify-center mb-6">
+                        <img src="Red-Bull-Logo.png" alt="Red Bull Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'text-red-500 font-bold text-center\'>[Image: Red-Bull-Logo.png]</div>'">
+                     </div>
+
+                     <!-- Text -->
+                     <div class="text-center">
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                           Red Bull <strong class="text-white font-black">owns two teams</strong>. It's their biggest marketing tool to sell drinks to <strong class="text-white font-black">500M+</strong> global fans.
+                        </p>
+                   </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== POD 5: CAN I BE A DRIVER? ===== -->
+        <section class="pod lg:col-span-2" id="pod5">
+            <div class="pod-title">
+                <div class="pod-number">05</div>
+                <div class="pod-title-text">Can I be a Driver?</div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                 <!-- Image -->
+                 <div class="flex justify-center items-center">
+                    <img src="Steering-Wheel.png" alt="F1 Steering Wheel" class="w-40 h-40 md:w-64 md:h-64 object-contain" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'text-red-500 font-bold text-center\'>[Image: Steering-Wheel.png]</div>'">
+                </div>
+                
+                <!-- Content -->
+                <div class="md:col-span-2 space-y-6">
+                    <p class="text-xl">Becoming an F1 driver is incredibly rare. Only 20 drivers in the world hold a seat at any given time.</p>
+                    
+                    <h3 class="font-bold text-white text-lg uppercase">WHAT SETS THEM APART?</h3>
+                    
+                    <ul class="f1-list list-none">
+                        <li><span class="f1-arrow">&gt;</span><strong class="text-white">Starting Young:</strong> Most begin karting as early as age 4 or 5.</li>
+                        <li><span class="f1-arrow">&gt;</span><strong class="text-white">Funding:</strong> Millions of dollars are needed to progress through junior categories (F4, F3, F2).</li>
+                        <li><span class="f1-arrow">&gt;</span><strong class="text-white">Talent & Dedication:</strong> Unwavering commitment and raw speed are non-negotiable.</li>
+                         <li><span class="f1-arrow">&gt;</span><strong class="text-white">Super Licence:</strong> Drivers must earn enough points in junior series to qualify for an FIA Super Licence.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- /grid container -->
+
+</body>
+</html>
